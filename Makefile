@@ -1,6 +1,6 @@
 REGISTRY = ci-registry.c3iot.io
 NAME = custom-pod-autoscaler
-VERSION = 1.0.0
+VERSION = 1.0.1
 C3UBI = c3-ubi
 
 default: vendor_modules
