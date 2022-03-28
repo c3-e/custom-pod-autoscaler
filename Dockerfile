@@ -31,7 +31,10 @@ COPY dist /app/
 CMD [ "/app/custom-pod-autoscaler" ]
 
 # Alpine build
-FROM alpine:3.10 AS alpine
+FROM registry.c3.ai/ubi/ubi8-minimal:8.5.240.1 AS c3-ubi
+LABEL MAINTAINER="C3.ai <ops-tool@c3.ai>" \
+      DESCRIPTION="c3 custom pod autoscaler image for ops" \
+      NAME="custom pod autoscaler"
 WORKDIR /app
 COPY dist /app/
 CMD [ "/app/custom-pod-autoscaler" ]

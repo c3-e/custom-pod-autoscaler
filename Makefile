@@ -1,6 +1,7 @@
-REGISTRY = custompodautoscaler
+REGISTRY = ci-registry.c3iot.io
 NAME = custom-pod-autoscaler
-VERSION = latest
+VERSION = 1.0.0
+C3UBI = c3-ubi
 
 default: vendor_modules
 	@echo "=============Building============="
@@ -25,7 +26,7 @@ docker: default
 	docker build --target=python-3-6 -t $(REGISTRY)/python-3-6:$(VERSION) .
 	docker build --target=python-3-7 -t $(REGISTRY)/python-3-7:$(VERSION) .
 	docker build --target=python-3-8 -t $(REGISTRY)/python-3-8:$(VERSION) .
-	docker build --target=alpine -t $(REGISTRY)/alpine:$(VERSION) .
+	docker build --target=$(C3UBI) -t $(REGISTRY)/scaler-base:$(VERSION) .
 	docker build --target=openjdk-11 -t $(REGISTRY)/openjdk-11:$(VERSION) .
 	docker tag $(REGISTRY)/python-3-8:$(VERSION) $(REGISTRY)/python:$(VERSION)
 
